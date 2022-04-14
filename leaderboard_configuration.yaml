@@ -1,0 +1,268 @@
+# Optional: Whether to allow users to see the test / blind scores of their
+# submissions prior to publishing results. This should only be enabled
+# if you're not concerned about overfitting. Defaults to false.
+show_unpublished_scores: false
+
+# Optional: If true, then the 7-day publishing "speed bump" is disabled,
+# allowing successful submissions to be published without delay.
+#
+# This can be enabled temporarily to backfill a leaderboard with established
+# results before making it public, and disabled after backfilling is complete.
+#
+# Enabling this for public Leaderboards is possible, making it easier
+# to publish results. Please note that it makes overfitting a model to
+# the blind labels easy. So if you enable this for your leaderboard, either
+# trust your submitters, or pay attention to incoming submissions to recognize
+# people gaming the system.
+disable_publish_speed_bump: false
+
+# Required: The configuration for reading results from the evaluator
+evaluator:
+  # Required: The metrics we expect to be generated. Your evaluator can return
+  # several metrics, and must have at least one. If your evaluator produces metrics
+  # not listed here, they will be ignored without causing problems.
+  metrics:
+      # Required: A unique identifier for the metric.
+    - key: rougeL
+      # Required: The name to be displayed in the UI for the metric.
+      display_name: "Rouge-L"
+      # Optional: Description will be used if listing the metrics and in tooltips
+      description: "ROUGE-L"
+      # Optional: A human's performance for the given metric.
+#      human_score: 0.5
+    - key: rouge1
+      display_name: "Rouge-1"
+    - key: rouge2
+      display_name: "Rouge-2"
+    - key: delta_ei_avg
+      display_name: "Delta EI Average Divergence"
+      description: "Divergence metric described in MS^2 paper; lower is better, indicates better agreement in evidence direction between generated and target summaries"
+    - key: delta_ei_micro_f1
+      display_name: "Delta EI Micro-F1"
+    - key: delta_ei_macro_f1
+      display_name: "Delta EI Macro-F1"
+
+# Required: A description of the table of scores to show.
+metrics_table:
+
+  # Required: A list of columns to display.
+  columns:
+
+      # Required: Column name that is displayed on the page.
+    - name: rougeL
+
+      # Optional: A description of the column. This appears as a tooltip when
+      # hovering over the column.
+      description: ROUGE-L
+
+      # Required: A rendering component to use when displaying the column.
+      # These renderers are implemented:
+      #
+      # * The renderer "simple" displays just one metric plainly.
+      # * The renderer "error" displays a metric with two error values (two
+      #   metrics) in the superscript and subscript.
+      renderer: "simple"
+
+      # Required: A list of metric keys to look up metric values and provide to
+      # the rendering component.
+      #
+      # * For renderer "simple", only one metric key is needed.
+      #
+      # * For renderer "error", three metrics are needed: a score, an upper
+      #   error and a lower error. For example, if the score is 0.847, the
+      #   upper error is 0.15, and the lower error is 0.23, then this renderer
+      #   will render these three metrics like this:
+      #
+      #             +0.15
+      #       0.847
+      #             -0.23
+      #
+      metric_keys: ["rougeL"]
+    - name: rouge1
+      description: ROUGE-1
+      renderer: simple
+      metric_keys: ["rouge1"]
+    - name: rouge2
+      description: ROUGE-2
+      renderer: simple
+      metric_keys: ["rouge2"]
+    - name: delta_ei_avg
+      description: Delta_EI_Average_Divergence
+      renderer: simple
+      metric_keys: ["delta_ei_avg"]
+    - name: delta_ei_micro_f1
+      description: Delta_EI_Micro_F1
+      renderer: simple
+      metric_keys: [ "delta_ei_micro_f1" ]
+    - name: delta_ei_macro_f1
+      description: Delta_EI_Macro_F1
+      renderer: simple
+      metric_keys: [ "delta_ei_macro_f1" ]
+
+# Required: Information that impacts the display of your leaderboard in the UI
+metadata:
+  # Optional: The groups your leaderboard belongs to. Valid ids are "darpa" and
+  # "ai2". If you don't enter a value here, the leaderboard won't be displayed
+  # anywhere in the UI.
+  tag_ids:
+    - ai2
+
+  # Required: The logo for your leaderboard. It should reside in the file
+  # ui/src/assets/images/leaderboard/ID/logo.svg where ID is the identifier of
+  # this board. To create a logo, contact the ReViz team: reviz@allenai.org.
+  logo: /assets/images/leaderboard/coming-soon.svg
+
+  # Required: An abbreviation identifying your leaderboard.
+  #
+  # Please think of an interesting name. For example, YRLDRBRD or XGQCCTvN are
+  # bad names because they're not pronouncible nor memorable , while something
+  # like QASC or ARC or DROP are better.
+  short_name: MSLR
+
+  # Required: The fully qualified leaderboard name.
+  long_name: "MSLR: Multi-Document Summarization for Literature Reviews"
+
+  # Required: A paragraph describing your leaderboard. Markdown is not
+  # supported in this field.
+  description: >
+    Systematic literature reviews aim to comprehensively summarize evidence from
+    all available studies relevant to a question. In the context of medicine, such
+    reviews constitute the highest quality evidence used to inform clinical care.
+    However, reviews are expensive to produce manually; (semi-)automation via NLP
+    may facilitate faster evidence synthesis without sacrificing rigor. Toward
+    this end, we introduce a dataset of 20k reviews (comprising 470K studies)
+    derived from the literature to study the task of generating review summaries.
+    For this shared task, each submission is judged against a gold review summary
+    on ROUGE score and by the evidence-inference-based divergence metric defined
+    in the MS2 paper (https://arxiv.org/abs/2104.06486). We also encourage
+    contributions which extend this task and dataset, e.g., by proposing
+    scaffolding tasks, methods for model interpretability, and improved automated
+    evaluation methods in this domain.
+
+  # Required: An example question from your leaderboard. This field supports
+  # markdown.
+  example: |
+    Document ID: 205832151
+    Target summary: "Current evidence from systematic review and meta- analysis
+    revealed that  probiotics  are the most promising intervention in reduction
+    of the incidence of  NEC  in  VLBW neonates .\n As per the evidence ,
+    prebiotics  modulate the composition of human intestine microflora to the
+    benefit of the host by  suppression  of  colonization of harmful microorganism
+    and /or  the stimulation of bifidobacterial growth , decreased stool viscosity ,
+    reduced gastrointestinal transit time , and better feed tolerance ."
+
+  # Required: Instructions for getting the datasets associated with your
+  # leaderboard.  This field supports markdown.
+  getting_the_data: |
+    You can get data [here](https://github.com/allenai/ms2)
+
+  # Required: An explanation of how scores are calculated. This field supports
+  # markdown.
+  scoring: |
+    ROUGE compares the n-grams in the submitted summaries and the targets. Delta
+    EI is based on the distribution of evidence inference predictions between the
+    reference studies and target summary and reference studies and generated summary.
+    Delta EI is a model-based metric (see the MS2 [paper](https://arxiv.org/abs/2104.06486)
+    for details).
+
+  # Required: An explanation of what user submissions should look like. This
+  # field supports markdown.
+  predictions_format: |
+    Your generated summaries should be input as a JSONLINES file, with a row per
+    summary, like so:
+      ```
+      {"docid": "205832151", "generated": "<s>Current evidence from systematic review and meta- analysis revealed that  probiotics  are the most promising intervention in reduction of the incidence of  NEC  in  VLBW neonates.\n As per the evidence,  prebiotics  modulate the composition of human intestine microflora to the benefit of the host by  suppression  of  colonization of harmful microorganism  and /or  the stimulation of bifidobacterial growth, decreased stool viscosity, reduced gastrointestinal transit time, and better feed tolerance.</s>"}
+      {"docid": "1785126", "generated": "<s>The use of glucomannan did not appear to significantly alter any other study  endpoints .\n Pediatric patients ,  patients receiving dietary modification , and  patients with impaired glucose metabolism  did not benefit from  glucomannan  to the same degree.\nCONCLUSIONS  Glucomannan  appears to beneficially affect  total cholesterol, LDL cholesterol, triglycerides, body weight, and FBG , but not HDL cholesterol or BP</s>"}
+      ```
+    Each line requires the keys `docid` and `generated`, corresponding to the document
+    identifier and generated summary.
+
+  # Required: A freeform list of example models. Markdown is supported in this field.
+  example_models: |
+      Check out the models [here](https://github.com/allenai/ms2).
+
+  # Required: Metadata about the affiliated team at AI2
+  team:
+    # Required: The team's name
+    name: Semantic Scholar
+    # Optional: A short paragraph describing the team.
+    description:
+      The MSLR shared task is organized by Lucy Lu Wang (AI2), Jay DeYoung
+      (Northeastern University), and Byron Wallace (Northeastern University).
+  # Required: A short description of your leaderboard's purpose. This field
+  # supports markdown.
+  purpose:
+    Project MSLR is focused on identifying techniques for
+    performing multi-document summarization of medical studies
+    for literature reviews. There is an associated shared task
+    to be held at the Scholarly Document Processing Workshop at
+    COLING 2022. You can find out more [here](https://sdproc.org/2022/sharedtasks.html).
+
+  # Optional: Rules specific to this leaderboard. If not provided, the default
+  # rules are displayed. This field supports markdown.
+#  custom_rules: |
+#    * Don't do this.
+#    * Don't do that.
+#    * Do this.
+
+  # Optional display precision for metrics (default is 4)
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+  metric_precision: 4
+
+  # Optional: If True end users can enter text into a search box to filter the displayed metrics
+  # using a regular expression.
+  show_column_filter: true
+
+  # Optional: Set of terms to use for auto complete when filtering metric
+  # columns
+#  metric_filter_suggestions:
+#    - "*Avg|.*NQA"
+#    - "Avg\\."
+#    - "aNLG"
+#    - "NQA"
+
+  # Optional: Array of chart definitions to compare multiple metrics of each
+  # submission
+  metric_chart_configs:
+      # Description shown under the chart
+    - caption: "MSLR evaluation metrics."
+      # Ordinal x values
+      categories:
+          # Key to the metric to chart
+        - metric_key: rougeL
+          # Optional: label to use in the chart for this category, defaults to
+          # the metrics displayName
+          display_name: "ROUGE-L"
+      # Optional: Number of series to show on the chart
+      max_series_to_show: 9
+      # Metric to sort and filter by
+      series_order_metric: "rougeL"
+      # chart properties are passed directly to plotly
+      # (https://plot.ly/javascript/)
+      chart:
+        # Type of chart: bar | scatter
+        type: "scatter"
+        # Optional: Mode of points: lines | markers | markers+lines
+        mode: "lines+markers"
+        # Optional: Chart layout info
+        layout:
+          # Optional: should we display a legend
+          showlegend: true
+          # Optional: Y axis info
+          yaxis:
+            # Optional: Y axis label
+            title: "Label for the y-axis"
+            # Optional: Y axis range
+            range:
+              - 0.5
+              - 1
+          # Optional: X axis info
+          xaxis:
+            # Optional: X axis label
+            title: "Label for the x-axis"
+
+  # Optional: If true, a "Show Compact Table" button will appear below the
+  # table of public submissions. This shows a modal with the metric results in
+  # a compact way, which is especially useful as an at-a-glance view for
+  # leaderboards that have many metric/columns to show. Defaults to false.
+  show_compact_table_button: false

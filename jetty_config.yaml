@@ -1,0 +1,38 @@
+{
+  "inputFile": "predictions.jsonl",
+  "outputFile": "metrics.json",
+  "spec": {
+    "image": {
+      "beaker": "lucyw/s2-leaderboard-eval-mslr"
+    },
+    "command": [
+      "conda",
+      "run",
+      "-n",
+      "mslr",
+      "python",
+      "/app/evaluator/evaluator.py"
+    ],
+    "arguments": [
+      "--targets",
+      "/app/data/target-summaries.jsonl",
+      "--predictions",
+      "/input/predictions.jsonl",
+      "--output",
+      "/app/output/metrics.json",
+      "--ei_param_file",
+      "/app/data/bert_pipeline_8samples.json",
+      "--ei_model_dir",
+      "/app/models/evidence_inference_models"
+    ],
+    "result": {
+      "path": "/app/output"
+    },
+    "context": {
+      "cluster": "ai2/s2-cirrascale",
+      "priority": "normal"
+    }
+  },
+  "beakerUser": "leaderboard",
+  "beakerWorkspace": "leaderboard/jetty"
+}

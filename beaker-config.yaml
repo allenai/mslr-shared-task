@@ -1,0 +1,32 @@
+version: v2-alpha
+description: MS2 evaluation
+tasks:
+  # We only have one step in our experiment, so there's only one entry in this list
+  - name: evaluation
+    image:
+      beaker: lucyw/s2-leaderboard-eval-mslr
+    command: [
+        "conda", "run", "-n", "mslr",
+        "python", "/app/evaluator/evaluator.py"
+    ]
+    arguments: [
+      "--targets",
+      "/app/data/target-summaries.jsonl",
+      "--predictions",
+      "/app/data/predicted.jsonl",
+      "--output",
+      "/app/output/metrics.json",
+      "--ei_param_file",
+      "/app/data/bert_pipeline_8samples.json",
+      "--ei_model_dir",
+      "/app/models/evidence_inference_models"
+    ]
+    result:
+      # Beaker will capture anything that's written to this location and store it in the results
+      # dataset.
+      path: /app/output
+    resources:
+      gpuCount: 1
+    context:
+      cluster: ai2/s2-cirrascale
+      priority: normal
