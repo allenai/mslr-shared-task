@@ -1,4 +1,4 @@
-name: ms2_evaluation
+name: mslr
 channels:
   - pytorch
   - defaults
@@ -96,4 +96,4 @@ dependencies:
     - typing-inspect==0.7.1
     - urllib3==1.26.8
     - wasabi==0.9.0
-prefix: /home/lucyw/miniconda3/envs/ms2_evaluation
+prefix: /home/lucyw/miniconda3/envs/mslr
