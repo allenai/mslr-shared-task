@@ -15,7 +15,7 @@
     ],
     "arguments": [
       "--targets",
-      "/app/data/target-summaries.jsonl",
+      "/app/data/target-summaries-ms2.jsonl",
       "--predictions",
       "/input/predictions.jsonl",
       "--output",

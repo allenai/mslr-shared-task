@@ -110,17 +110,18 @@ metadata:
   # Required: The logo for your leaderboard. It should reside in the file
   # ui/src/assets/images/leaderboard/ID/logo.svg where ID is the identifier of
   # this board. To create a logo, contact the ReViz team: reviz@allenai.org.
-  logo: /assets/images/leaderboard/coming-soon.svg
+  logo: /assets/images/leaderboard/mslr/logo.svg
+
 
   # Required: An abbreviation identifying your leaderboard.
   #
   # Please think of an interesting name. For example, YRLDRBRD or XGQCCTvN are
   # bad names because they're not pronouncible nor memorable , while something
   # like QASC or ARC or DROP are better.
-  short_name: MSLR
+  short_name: MSLR-MS2-Subtask
 
   # Required: The fully qualified leaderboard name.
-  long_name: "MSLR: Multi-Document Summarization for Literature Reviews"
+  long_name: "MSLR: Multi-Document Summarization for Literature Reviews (MS2 Subtask)"
 
   # Required: A paragraph describing your leaderboard. Markdown is not
   # supported in this field.

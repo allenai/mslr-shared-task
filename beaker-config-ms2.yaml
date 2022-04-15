@@ -11,7 +11,7 @@ tasks:
     ]
     arguments: [
       "--targets",
-      "/app/data/target-summaries.jsonl",
+      "/app/data/target-summaries-ms2.jsonl",
       "--predictions",
       "/app/data/predicted.jsonl",
       "--output",
