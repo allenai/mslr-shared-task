@@ -64,35 +64,58 @@ Reviews-Info (only available for MS^2) are CSV files with the following columns:
 * ReviewID
 * Background (the background information associated with the review; can be used optionally as input)
 
-## Leaderboard
-
-Information on the leaderboard will be added soon! For now, please refer to the Evaluation section below.
-
 ## Evaluation
 
 Each submission to this shared task will be judged against gold review summaries on ROUGE score and by the evidence-inference-based divergence metric defined in the [MS^2 paper](https://arxiv.org/pdf/2104.06486.pdf). The evaluation script is available at `evaluator/evaluator.py`. 
 
-To ensure that our leaderboard will correctly assess your submission, you may want to first test your the evaluator on your outputs for the dev set. To run the evaluator script on your predictions, you must first setup your environment using [conda](https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links):
+To ensure that our leaderboard will correctly assess your submission, you may want to first test your the evaluator on your outputs for the dev set. 
+
+To run the evaluator script on your predictions, first clone this repo:
+
+```
+git clone git@github.com:allenai/mslr-shared-task.git
+```
+
+Then setup your environment using [conda](https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links):
 
 ```
 conda env create -f environment.yml
 conda activate mslr
+conda install -c conda-forge jsonnet
+pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_sm-0.4.0.tar.gz
+
+# from the base directory of the repository, run:
+python setup.py develop
+```
+
+Download the evidence inference models:
+
+```
+cd models/
+wget https://ai2-s2-ms2.s3-us-west-2.amazonaws.com/evidence_inference_models.zip
+unzip -q evidence_inference_models.zip
 ```
 
 Then, after you have produced predictions for the dev set (`dev-predictions.csv`), try:
 
 ```
 python evaluator/evaluator.py \
-  --targets path_to/dev-inputs.csv \
+  --targets path_to/dev-targets.csv \
   --predictions path_to/dev-predictions.csv \
-  --output path_to/metrics.json
+  --output output/metrics.json \
+  --ei_param_file models/bert_pipeline_8samples.json \
+  --ei_model_dir models/evidence_inference_models/ 
 ```
 
-`metrics.json` contains the computed metrics. The evaluator script takes around 3 hours to run on CPU and a few minutes on GPU.
+When this script finishes, it will output metrics to `output/metrics.json` or another specified output file. The evaluator script takes around 3 hours to run on CPU and a few minutes on GPU.
 
-Evaluating generated text is notoriously challenging. **In addition to automated metrics, a sample of summaries from each submission will also be subject to human evaluation to measure consistency with the target.** These human evaluation results will be shared with participants, and will be released at the end of this shared task to facilitate the development of multi-document summarization models and better automated summarization evaluation metrics. Participants will be invited to contribute to the submission of a dataset paper.
+Evaluating generated text is notoriously challenging. **In addition to automated metrics, a sample of summaries from select submissions to the leaderboards will also be subject to human evaluation to measure consistency with the target.** These human evaluation results will be shared with participants, and will be released at the end of this shared task to facilitate the development of multi-document summarization models and better automated summarization evaluation metrics. Participants will be invited to contribute to the submission of a dataset paper.
 
-## Submission Instructions
+## Leaderboard
+
+WIP: Information on the leaderboard will be added soon! For now, please refer to the [Evaluation section](#evaluation).
+
+## Paper Submission Instructions
 
 Participants are invited to submit a paper describing their shared task contribution. Submissions will be subject to peer-review. Accepted papers will be presented by the authors at the SDP workshop either as a talk or a poster. All accepted papers will be published in the workshop proceedings in the ACL Anthology (proceedings from previous years can be found [here](https://aclanthology.org/venues/sdp/)).
 
