@@ -107,7 +107,7 @@ python evaluator/evaluator.py \
   --ei_model_dir models/evidence_inference_models/ 
 ```
 
-When this script finishes, it will output metrics to `output/metrics.json` or another specified output file. The evaluator script takes around 3 hours to run on CPU and a few minutes on GPU.
+When this script finishes, it will output metrics to `output/metrics.json` or another specified output file. The evaluator script can take several hours to run on CPU so please be patient.
 
 Evaluating generated text is notoriously challenging. **In addition to automated metrics, a sample of summaries from select submissions to the leaderboards will also be subject to human evaluation to measure consistency with the target.** These human evaluation results will be shared with participants, and will be released at the end of this shared task to facilitate the development of multi-document summarization models and better automated summarization evaluation metrics. Participants will be invited to contribute to the submission of a dataset paper.
 
