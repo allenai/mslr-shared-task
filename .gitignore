@@ -1,3 +1,4 @@
 .idea/
 evaluator/__pycache__/
 output/metrics.json
+data/*
