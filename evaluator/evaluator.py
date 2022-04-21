@@ -35,12 +35,11 @@ def read_targets(target_file: str) -> Dict[str, Dict]:
     assert os.path.exists(target_file)
     target_dict = dict()
     with open(target_file, 'r') as f:
-        for line in f:
-            entry = json.loads(line.strip())
-            target_dict[entry["docid"]] = {
-                "target": entry["target"],
-                "references": entry["references"],
-                "preface": entry["preface"]
+        reader = csv.DictReader(f, delimiter=',', quotechar='"')
+        for entry in reader:
+            target_dict[entry["ReviewID"]] = {
+                "target": entry["Target"],
+                "preface": entry["Background"]
             }
     if len(target_dict) == 0:
         logging.error(f"No summaries found in file {target_file}")
@@ -54,9 +53,9 @@ def read_predictions(pred_file: str) -> Dict[str, str]:
     assert os.path.exists(pred_file)
     prediction_dict = dict()
     with open(pred_file, 'r') as f:
-        for line in f:
-            entry = json.loads(line.strip())
-            prediction_dict[entry["docid"]] = entry["generated"]
+        reader = csv.DictReader(f, delimiter=',', quotechar='"')
+        for entry in reader:
+            prediction_dict[entry["ReviewID"]] = entry["Generated"]
     if len(prediction_dict) == 0:
         logging.error(f"No summaries found in file {pred_file}")
         sys.exit(-1)
@@ -74,7 +73,7 @@ def calculate_rouge(targets: Dict[str, Dict], generated: Dict[str, str]) -> Dict
     logging.info(f"Computing ROUGE scores...")
     docids = list(targets.keys())
     target_texts = [[targets[docid]['target']] for docid in docids]
-    generated_texts = [[generated[docid]] for docid in docids]
+    generated_texts = [[generated.get(docid, '')] for docid in docids]
 
     # rouge scoring
     tokenizer = get_tokenizer('facebook/bart-base')
@@ -102,7 +101,7 @@ def calculate_evidence_inference_divergence(
     docids = list(targets.keys())
     target_texts = [targets[docid]['target'] for docid in docids]
     preface_texts = [targets[docid]['preface'] for docid in docids]
-    generated_texts = [generated[docid] for docid in docids]
+    generated_texts = [generated.get(docid, '') for docid in docids]
 
     generated_texts = list(map(clean, generated_texts))
     target_texts = list(map(clean, target_texts))
