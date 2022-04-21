@@ -10,7 +10,7 @@ class TestEvaluator(unittest.TestCase):
         :return:
         """
         target_file = 'test-targets.csv'
-        generated_file = 'test-generated.csv'
+        generated_file = 'test-predictions.csv'
 
         targets = read_targets(target_file)
         predictions = read_predictions(generated_file)
