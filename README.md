@@ -18,13 +18,20 @@ This task will be co-located at the [Scholarly Document Processing Workshop](htt
 
 The MSLR2022 Shared Task uses two datasets, the MS^2 dataset and the Cochrane dataset. Inputs and target summaries for both datasets are formatted the same way and separated into train/dev/test splits. The MS^2 dataset is much larger, while the Cochrane dataset is smaller but contains cleaner data derived from Cochrane. Additionally, the MS^2 dataset includes something we refer to as Reviews-Info, which is a piece of background text derived from the review that can be used as an optional input during summarization. 
 
+Download link: [here](https://ai2-s2-mslr.s3.us-west-2.amazonaws.com/mslr_data.tar.gz) (253 Mb; md5: `03cf9d`, sha1: `a8f1fa`)
+
+```
+wget https://ai2-s2-mslr.s3.us-west-2.amazonaws.com/mslr_data.tar.gz
+tar -xvf mslr_data.tar.gz
+```
+
+This creates a data directory with two subdirectories corresponding to the two datasets below. See below for contents.
+
 ### MS^2 Dataset
 
 This dataset consists of around 20K reviews and 470K studies collected from PubMed. For details on dataset contents and construction, please read the [MS^2 paper](https://arxiv.org/pdf/2104.06486.pdf).
 
-Download link: [here](https://ai2-s2-mslr.s3.us-west-2.amazonaws.com/ms2_data/mslr-ms2-data.zip)
-
-This unzips into the following 8 files:
+The `mslr_data/ms2/` subdirectory should contain the following 8 files:
 
 |             | Train       | Dev         | Test        |
 | ----------- | ----------- | ----------- | ----------- |
@@ -36,9 +43,7 @@ This unzips into the following 8 files:
 
 This is a dataset of 4.5K reviews collected from Cochrane systematic reviews. For details on dataset contents and construction, please read the [AMIA paper](https://arxiv.org/pdf/2008.11293.pdf).
 
-Download link: [here](https://ai2-s2-mslr.s3.us-west-2.amazonaws.com/cochrane_data/mslr-cochrane-data.zip)
-
-This unzips into the following 5 files:
+The `mslr_data/cochrane/` subdirectory should contain the following 5 files:
 
 |             | Train       | Dev         | Test        |
 | ----------- | ----------- | ----------- | ----------- |
