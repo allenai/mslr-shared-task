@@ -96,7 +96,18 @@ wget https://ai2-s2-ms2.s3-us-west-2.amazonaws.com/evidence_inference_models.zip
 unzip -q evidence_inference_models.zip
 ```
 
-Then, after you have produced predictions for the dev set (`dev-predictions.csv`), try:
+To test the evaluation script, try:
+
+```
+python evaluator/evaluator.py \
+  --targets evaluator/test-targets.csv \
+  --predictions evaluator/test-predictions.csv \
+  --output output/metrics.json \
+  --ei_param_file models/bert_pipeline_8samples.json \
+  --ei_model_dir models/evidence_inference_models/ 
+```
+
+Once you are ready to submit, you can validate the evaluation on your predictions for the dev set (`dev-predictions.csv`):
 
 ```
 python evaluator/evaluator.py \
