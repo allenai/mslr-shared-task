@@ -68,6 +68,11 @@ Reviews-Info (only available for MS^2) are CSV files with the following columns:
 
 Each submission to this shared task will be judged against gold review summaries on ROUGE score and by the evidence-inference-based divergence metric defined in the [MS^2 paper](https://arxiv.org/pdf/2104.06486.pdf). The evaluation script is available at `evaluator/evaluator.py`. 
 
+The format of the predictions is expected to be a CSV file with the following columns:
+* index: row number (ignored)
+* ReviewID: same review id as in the input and target files
+* Generated: containing the generated summary
+
 To ensure that our leaderboard will correctly assess your submission, you may want to first test your the evaluator on your outputs for the dev set. 
 
 To run the evaluator script on your predictions, first clone this repo:
