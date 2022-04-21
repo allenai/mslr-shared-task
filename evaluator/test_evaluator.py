@@ -9,8 +9,8 @@ class TestEvaluator(unittest.TestCase):
         Test that ROUGE works
         :return:
         """
-        target_file = 'test-summaries.jsonl'
-        generated_file = 'test-generated.jsonl'
+        target_file = 'test-targets.csv'
+        generated_file = 'test-generated.csv'
 
         targets = read_targets(target_file)
         predictions = read_predictions(generated_file)
