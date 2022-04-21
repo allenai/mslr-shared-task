@@ -14,7 +14,7 @@ This task will be co-located at the [Scholarly Document Processing Workshop](htt
 
 **Workshop:** October 16-17, 2022 (Online and in Gyeongju, South Korea)
 
-## Datasets
+## Dataset Access
 
 The MSLR2022 Shared Task uses two datasets, the MS^2 dataset and the Cochrane dataset. Inputs and target summaries for both datasets are formatted the same way and separated into train/dev/test splits. The MS^2 dataset is much larger, while the Cochrane dataset is smaller but contains cleaner data derived from Cochrane. Additionally, the MS^2 dataset includes something we refer to as Reviews-Info, which is a piece of background text derived from the review that can be used as an optional input during summarization. 
 
