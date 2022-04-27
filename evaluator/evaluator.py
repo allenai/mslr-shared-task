@@ -8,6 +8,7 @@ import logging
 import argparse
 from typing import *
 import torch
+import bert_score
 
 from ms2.models.utils import rouge_scores
 from ms2.models.evidence_inference_models import initialize_models
@@ -79,6 +80,27 @@ def calculate_rouge(targets: Dict[str, Dict], generated: Dict[str, str]) -> Dict
     tokenizer = get_tokenizer('facebook/bart-base')
     rouge_results = rouge_scores(generated_texts, target_texts, tokenizer, use_aggregator=True)
     return rouge_results
+
+
+def calculate_bertscore(targets: Dict[str, Dict], generated: Dict[str, str], model_type="roberta-large") -> Dict:
+    """
+    Calculate BERTscore
+    :param targets:
+    :param generated:
+    :return:
+    """
+    logging.info(f"Computing BERTscore...")
+    docids = list(targets.keys())
+    target_texts = [targets[docid]['target'] for docid in docids]
+    generated_texts = [generated.get(docid, '') for docid in docids]
+
+    # BERTscore
+    bs_ps, bs_rs, bs_fs = bert_score.score(generated_texts, target_texts, model_type=model_type)
+    return {
+        "bs_ps": bs_ps,
+        "bs_rs": bs_rs,
+        "bs_fs": bs_fs
+    }
 
 
 def calculate_evidence_inference_divergence(
@@ -153,6 +175,19 @@ def calculate_metrics(
         generated=generated
     )
 
+    # BERTscore
+    bertscores = calculate_bertscore(
+        targets=targets,
+        generated=generated
+    )
+    bertscore_avg_p = torch.mean(bertscores['bs_ps']).item()
+    bertscore_avg_r = torch.mean(bertscores['bs_rs']).item()
+    bertscore_avg_f = torch.mean(bertscores['bs_fs']).item()
+
+    bertscore_std_p = torch.std(bertscores['bs_ps']).item()
+    bertscore_std_r = torch.std(bertscores['bs_rs']).item()
+    bertscore_std_f = torch.std(bertscores['bs_fs']).item()
+
     # EI divergence
     delta_ei = calculate_evidence_inference_divergence(
         targets=targets,
@@ -161,11 +196,10 @@ def calculate_metrics(
         ei_model_dir=ei_model_dir,
         ei_use_unconditional=ei_use_unconditional
     )
-
-    # TODO: Add other automated evaluation metrics
-
     delta_ei_micro_avg = delta_ei['f1_score'].get('micro avg')
     delta_ei_macro_avg = delta_ei['f1_score'].get('macro avg')
+
+    # TODO: Add other automated evaluation metrics
 
     metrics = {
         "rouge": rouge_scores,
@@ -173,6 +207,12 @@ def calculate_metrics(
         "rouge2": rouge_scores['rouge2'].mid.fmeasure,
         "rougeL": rouge_scores['rougeL'].mid.fmeasure,
         "rougeLsum": rouge_scores['rougeLsum'].mid.fmeasure,
+        "bertscore_avg_p": bertscore_avg_p,
+        "bertscore_avg_r": bertscore_avg_r,
+        "bertscore_avg_f": bertscore_avg_f,
+        "bertscore_std_p": bertscore_std_p,
+        "bertscore_std_r": bertscore_std_r,
+        "bertscore_std_f": bertscore_std_f,
         "delta_ei": delta_ei,
         "delta_ei_avg": delta_ei.get('average'),
         "delta_ei_std": delta_ei.get('std'),

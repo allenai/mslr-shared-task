@@ -71,7 +71,7 @@ Reviews-Info (only available for MS^2) are CSV files with the following columns:
 
 ## Evaluation
 
-Each submission to this shared task will be judged against gold review summaries on ROUGE score and by the evidence-inference-based divergence metric defined in the [MS^2 paper](https://arxiv.org/pdf/2104.06486.pdf). The evaluation script is available at `evaluator/evaluator.py`. 
+Each submission to this shared task will be judged against gold review summaries on [ROUGE score](https://aclanthology.org/W04-1013/), [BERTscore](https://arxiv.org/pdf/1904.09675.pdf), and by the evidence-inference-based divergence metric defined in the [MS^2 paper](https://arxiv.org/pdf/2104.06486.pdf). The evaluation script is available at `evaluator/evaluator.py`. 
 
 The format of the predictions is expected to be a CSV file with the following columns:
 * index: row number (ignored)
@@ -91,7 +91,6 @@ Then setup your environment using [conda](https://docs.conda.io/en/latest/minico
 ```
 conda env create -f environment.yml
 conda activate mslr
-conda install -c conda-forge jsonnet
 pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_sm-0.4.0.tar.gz
 
 # from the base directory of the repository, run:
