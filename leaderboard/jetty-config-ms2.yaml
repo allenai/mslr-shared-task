@@ -3,7 +3,7 @@
   "outputFile": "metrics.json",
   "spec": {
     "image": {
-      "beaker": "lucyw/s2-leaderboard-eval-mslr"
+      "beaker": "lucyw/s2-leaderboard-eval-mslr-2"
     },
     "command": [
       "conda",

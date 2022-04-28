@@ -190,7 +190,7 @@ metadata:
 
   # Required: A freeform list of example models. Markdown is supported in this field.
   example_models: |
-      Some baseline models are provided [here](https://github.com/allenai/ms2).
+      Some baseline models will be provided [here](https://github.com/allenai/mslr-shared-task).
 
   # Required: Metadata about the affiliated team at AI2
   team:

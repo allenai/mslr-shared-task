@@ -4,7 +4,7 @@ tasks:
   # We only have one step in our experiment, so there's only one entry in this list
   - name: evaluation
     image:
-      beaker: lucyw/s2-leaderboard-eval-mslr
+      beaker: lucyw/s2-leaderboard-eval-mslr-2
     command: [
         "conda", "run", "-n", "mslr",
         "python", "/app/evaluator/evaluator.py"
