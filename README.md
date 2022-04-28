@@ -18,7 +18,7 @@ This task will be co-located at the [Scholarly Document Processing Workshop](htt
 
 The MSLR2022 Shared Task uses two datasets, the MS^2 dataset and the Cochrane dataset. Inputs and target summaries for both datasets are formatted the same way and separated into train/dev/test splits. The MS^2 dataset is much larger, while the Cochrane dataset is smaller but contains cleaner data derived from Cochrane. Additionally, the MS^2 dataset includes something we refer to as Reviews-Info, which is a piece of background text derived from the review that can be used as an optional input during summarization. 
 
-Download link: [here](https://ai2-s2-mslr.s3.us-west-2.amazonaws.com/mslr_data.tar.gz) (253 Mb; md5: `03cf9d`, sha1: `a8f1fa`)
+Download link: [here](https://ai2-s2-mslr.s3.us-west-2.amazonaws.com/mslr_data.tar.gz) (253 Mb; md5: `d1ae52`, sha1: `3ba174`)
 
 ```
 wget https://ai2-s2-mslr.s3.us-west-2.amazonaws.com/mslr_data.tar.gz
@@ -36,8 +36,8 @@ The `mslr_data/ms2/` subdirectory should contain the following 8 files:
 |             | Train       | Dev         | Test        |
 | ----------- | ----------- | ----------- | ----------- |
 | Inputs      | train-inputs.csv (sha1:`ca4852`)       | dev-inputs.csv (sha1:`a18022`)   | test-inputs.csv (sha1:`daaf87`)    |
-| Targets     | train-targets.csv (sha1:`0da215`)      | dev-targets.csv (sha1:`133f80`)  |                       |
-| Review information (Optional) | train-reviews-info.csv (sha1:`2311ca`) | dev-reviews-info.csv (sha1:`ff86d9`) | test-reviews-info.csv (sha1:`44f162`) |
+| Targets     | train-targets.csv (sha1:`417a18`)      | dev-targets.csv (sha1:`4baf55`)  |                       |
+| Review information (Optional) | train-reviews-info.csv (sha1:`da1a1c`) | dev-reviews-info.csv (sha1:`60cc60`) | test-reviews-info.csv (sha1:`6a9c1e`) |
 
 ### Cochrane Dataset
 
@@ -54,19 +54,19 @@ The `mslr_data/cochrane/` subdirectory should contain the following 5 files:
 
 Inputs are CSV files with the following columns:
 * index: row number (ignore)
-* ReviewID
-* PMID (Pubmed ID)
-* Title
-* Abstract
+* ReviewID (Pubmed ID of the review)
+* PMID (Pubmed ID of the input study)
+* Title of input study
+* Abstract of input study
 
 Targets are CSV files with the following columns:
 * index: row number (ignore)
-* ReviewID
-* Target (the summary to be generated)
+* ReviewID (Pubmed ID of the review)
+* Target (the target summary, extracted from the review)
 
 Reviews-Info (only available for MS^2) are CSV files with the following columns:
 * index: row number (ignore)
-* ReviewID
+* ReviewID (Pubmed ID of the review)
 * Background (the background information associated with the review; can be used optionally as input)
 
 ## Evaluation
