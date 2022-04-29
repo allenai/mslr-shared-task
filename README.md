@@ -141,7 +141,7 @@ Participants are invited to submit a paper describing their shared task contribu
 
 Submissions must be in PDF format and anonymized for review. All submissions must be written in English and follow the [COLING 2022 formatting requirements](https://coling2022.org/Cpapers).
 
-Paper submissions can include up to 9 pages of content, plus unlimited references. Final versions of accepted papers will be allowed 1 additional page of content so that reviewer comments can be taken into account.
+Paper submissions can be long papers (8 pages of content), or short papers (4 pages of content) plus unlimited references. Final versions of accepted papers will be allowed 1 additional page of content so that reviewer comments can be taken into account.
 
 More details about submissions will be made available on our workshop [website](http://www.sdproc.org/). 
 
