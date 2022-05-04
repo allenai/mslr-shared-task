@@ -124,10 +124,10 @@ metadata:
   # Please think of an interesting name. For example, YRLDRBRD or XGQCCTvN are
   # bad names because they're not pronouncible nor memorable , while something
   # like QASC or ARC or DROP are better.
-  short_name: MSLR-MS2-Subtask
+  short_name: MSLR-Cochrane-Subtask
 
   # Required: The fully qualified leaderboard name.
-  long_name: "MSLR: Multi-Document Summarization for Literature Reviews (MS2 Subtask)"
+  long_name: "MSLR: Multi-Document Summarization for Literature Reviews (Cochrane Subtask)"
 
   # Required: A paragraph describing your leaderboard. Markdown is not
   # supported in this field.
