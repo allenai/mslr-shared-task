@@ -41,7 +41,7 @@ def read_targets(target_file: str) -> Dict[str, Dict]:
         for entry in reader:
             target_dict[entry["ReviewID"]] = {
                 "target": entry["Target"],
-                "preface": entry["Background"]
+                "preface": entry.get("Background", "")
             }
     if len(target_dict) == 0:
         logging.error(f"No summaries found in file {target_file}")
