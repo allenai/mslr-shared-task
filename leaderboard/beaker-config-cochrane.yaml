@@ -17,7 +17,7 @@ tasks:
       "--output",
       "/app/output/metrics.json",
       "--ei_param_file",
-      "/app/data/bert_pipeline_8samples.json",
+      "/app/models/bert_pipeline_8samples.json",
       "--ei_model_dir",
       "/app/models/evidence_inference_models"
     ]
