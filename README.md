@@ -1,6 +1,8 @@
-# MSLR Shared Task
+# MSLR Shared Task 
 
-The Multidocument Summarization for Literature Review (MSLR) Shared Task aims to study how medical evidence from different clinical studies are summarized in literature reviews. Reviews provide the highest quality of evidence for clinical care, but are expensive to produce manually. (Semi-)automation via NLP may facilitate faster evidence synthesis without sacrificing rigor. The MSLR shared task uses two datasets to assess the current state of multidocument summarization for this task, and to encourage the development of modeling contributions, scaffolding tasks, methods for model interpretability, and improved automated evaluation methods in this domain.
+<img style="float: right;" alt="MSLR logo" src="https://leaderboard.allenai.org/assets/images/leaderboard/mslr/logo.svg"> 
+
+The Multidocument Summarization for Literature Review (MSLR) Shared Task aims to study how medical evidence from different clinical studies are summarized in literature reviews. Reviews provide the highest quality of evidence for clinical care, but are expensive to produce manually. (Semi-)automation via NLP may facilitate faster evidence synthesis without sacrificing rigor. The MSLR shared task uses two datasets to assess the current state of multidocument summarization for this task, and to encourage the development of modeling contributions, scaffolding tasks, methods for model interpretability, and improved automated evaluation methods in this domain. 
 
 This task will be co-located at the [Scholarly Document Processing Workshop](https://sdproc.org/2022/) at [COLING 2022](https://coling2022.org/), to be held October 16-17, 2022, Online and in Gyeongju, South Korea. We invite submissions to our [leaderboard](#leaderboard) and [paper submissions](#submission-instructions) to the shared task. 
 
