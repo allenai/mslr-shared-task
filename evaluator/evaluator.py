@@ -9,6 +9,7 @@ import argparse
 from typing import *
 import torch
 import bert_score
+import warnings
 
 from ms2.models.utils import rouge_scores
 from ms2.models.evidence_inference_models import initialize_models
@@ -263,6 +264,16 @@ def main():
     args = parser.parse_args()
     targets = read_targets(args.targets)
     predictions = read_predictions(args.predictions)
+
+    # check sufficient overlap
+    overlap = set(targets.keys()) & set(predictions.keys())
+    prop_overlap = len(overlap) / len(targets)
+    if prop_overlap < 0.95:
+        warnings.warn(f'Only {prop_overlap * 100:.1f}% of target documents have predictions in the input file.')
+    if prop_overlap <= 0.5:
+        logging.error(f"Proportion of target documents represented in submitted predictions is less than 0.5!")
+        sys.exit(-1)
+
     metrics = calculate_metrics(targets, predictions, args.ei_param_file, args.ei_model_dir, args.ei_use_unconditional)
 
     print(metrics)

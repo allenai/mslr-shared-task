@@ -26,25 +26,23 @@ RUN mkdir /app/models
 RUN mkdir /app/output
 RUN mkdir /app/ms2
 
-# Create env and activate
-COPY environment.yml .
-RUN conda env create -n mslr --file environment.yml
-SHELL ["conda", "run", "-n", "mslr", "/bin/bash", "-c"]
-RUN conda install -c conda-forge jsonnet
-RUN pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_sm-0.4.0.tar.gz
-COPY setup.py /app/setup.py
-RUN python setup.py develop
-
 # Copy files
-COPY data/ /app/data
 COPY evaluator/ /app/evaluator
 COPY models/ /app/models
 COPY ms2/ /app/ms2
 
+# Create env and activate
+COPY environment.yml .
+RUN conda env create -n mslr --file environment.yml
+SHELL ["conda", "run", "-n", "mslr", "/bin/bash", "-c"]
+RUN pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_sm-0.4.0.tar.gz
+COPY setup.py /app/setup.py
+RUN python setup.py develop
+
 # Copy evidence inference models
 WORKDIR /app/models
 RUN wget https://ai2-s2-ms2.s3-us-west-2.amazonaws.com/evidence_inference_models.zip
-RUN unzip -q evidence_inference_models.zip
+RUN unzip -q -o evidence_inference_models.zip
 
 # Copy test data to data dir
 WORKDIR /app/data

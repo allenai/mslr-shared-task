@@ -11,7 +11,7 @@ tasks:
     ]
     arguments: [
       "--targets",
-      "/app/data/test-targets-ms2.csv",
+      "/app/data/test-targets-cochrane.csv",
       "--predictions",
       "/app/data/predicted.csv",
       "--output",

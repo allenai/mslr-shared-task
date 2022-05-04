@@ -86,6 +86,10 @@ metrics_table:
       description: ROUGE-2
       renderer: simple
       metric_keys: ["rouge2"]
+    - name: bertscore_avg_f
+      description: BERTScore_avg_f
+      renderer: simple
+      metric_keys: ["bertscore_avg_f"]
     - name: delta_ei_avg
       description: Delta_EI_Average_Divergence
       renderer: simple
@@ -134,11 +138,12 @@ metadata:
     this end, we introduce a dataset of 20k reviews (comprising 470K studies)
     derived from the literature to study the task of generating review summaries.
     For this shared task, each submission is judged against a gold review summary
-    on ROUGE score and by the evidence-inference-based divergence metric defined
-    in the MS2 paper (https://arxiv.org/abs/2104.06486). We also encourage
+    on ROUGE score, BERTScore, and by the evidence-inference-based divergence metric defined
+    in the [MS^2 paper](https://arxiv.org/abs/2104.06486). We also encourage
     contributions which extend this task and dataset, e.g., by proposing
     scaffolding tasks, methods for model interpretability, and improved automated
-    evaluation methods in this domain.
+    evaluation methods in this domain. More information
+    [here](https://github.com/allenai/mslr-shared-task)
 
   # Required: An example question from your leaderboard. This field supports
   # markdown.
@@ -155,32 +160,37 @@ metadata:
   # Required: Instructions for getting the datasets associated with your
   # leaderboard.  This field supports markdown.
   getting_the_data: |
-    You can get data [here](https://github.com/allenai/ms2)
+    Data access instructions [here](https://github.com/allenai/mslr-shared-task#dataset-access)
 
   # Required: An explanation of how scores are calculated. This field supports
   # markdown.
   scoring: |
-    ROUGE compares the n-grams in the submitted summaries and the targets. Delta
-    EI is based on the distribution of evidence inference predictions between the
-    reference studies and target summary and reference studies and generated summary.
-    Delta EI is a model-based metric (see the MS2 [paper](https://arxiv.org/abs/2104.06486)
-    for details).
+    [ROUGE](https://aclanthology.org/W04-1013/) compares the n-grams in the generated
+    summaries and the targets. [BERTScore](https://openreview.net/forum?id=SkeHuCVFDr)
+    computes token-level similarities between the generated summaries and targets using
+    contextual embeddings. Delta EI is based on the distribution of evidence inference
+    predictions between the reference studies and target summary and reference studies
+    and generated summary. Delta EI is a model-based metric introduced in the MS2
+    [paper](https://arxiv.org/abs/2104.06486). A lower Delta EI is better, indicating
+    less divergence (and hence more consistency) between the generated and target summaries.
 
   # Required: An explanation of what user submissions should look like. This
   # field supports markdown.
   predictions_format: |
-    Your generated summaries should be input as a JSONLINES file, with a row per
-    summary, like so:
+    Your predictions should be input as a CSV file, with a header row followed by one
+    row per generated summary, like so:
       ```
-      {"docid": "205832151", "generated": "<s>Current evidence from systematic review and meta- analysis revealed that  probiotics  are the most promising intervention in reduction of the incidence of  NEC  in  VLBW neonates.\n As per the evidence,  prebiotics  modulate the composition of human intestine microflora to the benefit of the host by  suppression  of  colonization of harmful microorganism  and /or  the stimulation of bifidobacterial growth, decreased stool viscosity, reduced gastrointestinal transit time, and better feed tolerance.</s>"}
-      {"docid": "1785126", "generated": "<s>The use of glucomannan did not appear to significantly alter any other study  endpoints .\n Pediatric patients ,  patients receiving dietary modification , and  patients with impaired glucose metabolism  did not benefit from  glucomannan  to the same degree.\nCONCLUSIONS  Glucomannan  appears to beneficially affect  total cholesterol, LDL cholesterol, triglycerides, body weight, and FBG , but not HDL cholesterol or BP</s>"}
+      ,ReviewID,Generated
+      0,28514886,"Current evidence revealed that probiotics are a promising intervention for reducing NEC in VLBW neonates."
+      1,18842808,"The use of glucomannan appears tp improve total cholesterol, LDL cholesterol, body weight, and other outcome measures."
       ```
-    Each line requires the keys `docid` and `generated`, corresponding to the document
-    identifier and generated summary.
+    The review IDs must match the IDs given in the test-inputs.csv file for this task. Please make sure
+    you submit to the correct subtask (MS^2 versus Cochrane). Please go [here]((https://github.com/allenai/mslr-shared-task#evaluation)
+    for detailed evaluation instructions.
 
   # Required: A freeform list of example models. Markdown is supported in this field.
   example_models: |
-      Check out the models [here](https://github.com/allenai/ms2).
+      Some baseline models will be provided [here](https://github.com/allenai/mslr-shared-task).
 
   # Required: Metadata about the affiliated team at AI2
   team:
@@ -193,11 +203,11 @@ metadata:
   # Required: A short description of your leaderboard's purpose. This field
   # supports markdown.
   purpose:
-    Project MSLR is focused on identifying techniques for
-    performing multi-document summarization of medical studies
-    for literature reviews. There is an associated shared task
-    to be held at the Scholarly Document Processing Workshop at
-    COLING 2022. You can find out more [here](https://sdproc.org/2022/sharedtasks.html).
+    Project MSLR is focused on identifying techniques for performing multi-document
+    summarization of medical studies for literature reviews. A shared task will be held
+    at the Scholarly Document Processing Workshop at COLING 2022. You can find out more
+    [here](https://sdproc.org/2022/sharedtasks.html). Submission instructions can found
+    [here](https://github.com/allenai/mslr-shared-task#paper-submission-instructions).
 
   # Optional: Rules specific to this leaderboard. If not provided, the default
   # rules are displayed. This field supports markdown.

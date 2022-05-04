@@ -15,7 +15,7 @@
     ],
     "arguments": [
       "--targets",
-      "/app/data/test-targets-ms2.csv",
+      "/app/data/test-targets-cochrane.csv",
       "--predictions",
       "/input/predictions.csv",
       "--output",
