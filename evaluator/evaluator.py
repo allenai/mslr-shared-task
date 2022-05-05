@@ -41,7 +41,7 @@ def read_targets(target_file: str) -> Dict[str, Dict]:
         for entry in reader:
             target_dict[entry["ReviewID"]] = {
                 "target": entry["Target"],
-                "preface": entry.get("Background", "")
+                "preface": entry.get("Background", entry['Target'])
             }
     if len(target_dict) == 0:
         logging.error(f"No summaries found in file {target_file}")
@@ -146,7 +146,7 @@ def calculate_evidence_inference_divergence(
     entailment_results = entailment_scores(
         evidence_inference_classifier, evidence_inference_tokenizer,
         generated_texts, target_texts, preface_texts,
-        use_ios=not ei_use_unconditional
+        use_ios=ei_use_unconditional
     )
 
     return entailment_results
