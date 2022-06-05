@@ -135,7 +135,14 @@ Evaluating generated text is notoriously challenging. **In addition to automated
 
 ## Leaderboard
 
-WIP: Information on the leaderboard will be added soon! For now, please refer to the [Evaluation section](#evaluation).
+Once you are ready to submit, you can find the task leaderboards on the [AI2 Leaderboard Page](https://leaderboard.allenai.org/):
+
+**MS^2 Subtask**: [https://leaderboard.allenai.org/mslr-ms2/submissions/public](https://leaderboard.allenai.org/mslr-ms2/submissions/public)
+**Cochrane Subtask**: [https://leaderboard.allenai.org/mslr-cochrane/submissions/public](https://leaderboard.allenai.org/mslr-cochrane/submissions/public)
+
+You will need to create an account to submit results. Before submitting, please confirm that you are submitting to the correct subtask! Evaluation may take several hours (especially for the MS^2 dataset). If evaluation completes successfully, you can return to the leaderboard page to publish your results. 
+
+If evaluation fails, you will receive an error. The same evaluation script as above is used in the leaderboard so please try to debug first by following the instructions in [the evaluation section](https://github.com/allenai/mslr-shared-task#evaluation). If you are able to get results with the evaluation script but not in the leaderboard, please contact [lucyw@allenai.org](mailto:lucyw@allenai.org).
 
 ## Paper Submission Instructions
 
