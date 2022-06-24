@@ -165,7 +165,7 @@ To receive updates , please join our mailing list:   https://groups.google.com/g
 
 ## Organizing Team
 
-* Lucy Lu Wang, AI2
+* Lucy Lu Wang, Allen Institute for AI (AI2)
 * Jay DeYoung, Northeastern University
 * Byron Wallace, Northeastern University
 
