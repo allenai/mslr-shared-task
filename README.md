@@ -1,4 +1,4 @@
-# MSLR Shared Task 2022: Multidocument Summarization for Literature Review
+# MSLR Shared Task 2022<br>Multidocument Summarization for Literature Review
 
 <img style="float: right;" alt="MSLR logo" src="https://leaderboard.allenai.org/assets/images/leaderboard/mslr/logo.svg"> 
 
