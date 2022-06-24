@@ -8,13 +8,15 @@ This task will be co-located at the [Scholarly Document Processing Workshop](htt
 
 ## Timeline
 
-**Submission deadline:** July 11, 2022
+**Submission deadline:** ~~July 11, 2022~~ August 1, 2022 23:59 AOE
 
 **Acceptance notifications:** August 22, 2022
 
-**Source files and Camera-ready PDFs:** September 5, 2022
+**Source files and Camera-ready PDFs:** September 5, 2022 (likely to be extended)
 
 **Workshop:** October 16-17, 2022 (Online and in Gyeongju, South Korea)
+
+**Note:** You do not have to submit a paper to present at the workshop, though it is encouraged. If you only submit to the leaderboards without submitting a paper, or if the model you submit to the leaderboards is published or being considered for publication elsewhere, we ask that you message the organizers with a 2-page abstract to be considered for presentation at the SDP workshop. Accepted full-length papers will be published in workshop proceedings. Abstracts are non-archival.
 
 ## Dataset Access
 
