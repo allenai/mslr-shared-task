@@ -159,7 +159,7 @@ Submissions must be in PDF format and anonymized for review. All submissions mus
 
 Paper submissions can be long papers (8 pages of content), or short papers (4 pages of content) plus unlimited references. Final versions of accepted papers will be allowed 1 additional page of content so that reviewer comments can be taken into account.
 
-More details about submissions will be made available on our workshop [website](http://www.sdproc.org/). 
+Submission instructions are available on the SDP workshop [website](http://www.sdproc.org/). In SoftConf, when starting a new submission, select "Click HERE to make a new MSLR22: Multi-Document Summarization for Literature Reviews" and follow instructions.
 
 ## Contact Us
 
