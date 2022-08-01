@@ -8,7 +8,7 @@ This task will be co-located at the [Scholarly Document Processing Workshop](htt
 
 ## Timeline
 
-**Submission deadline:** ~~July 11, 2022~~ August 1, 2022 23:59 AOE
+**Submission deadline:** ~~July 11, 2022~~ Friday, August 5, 2022 23:59 AOE **(Final extension)**
 
 **Acceptance notifications:** August 22, 2022
 
