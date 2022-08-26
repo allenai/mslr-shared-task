@@ -10,9 +10,9 @@ This task will be co-located at the [Scholarly Document Processing Workshop](htt
 
 **Submission deadline:** ~~July 11, 2022~~ Friday, August 5, 2022 23:59 AOE **(Final extension)**
 
-**Acceptance notifications:** August 26, 2022
+**Acceptance notifications:** August 29, 2022
 
-**Source files and Camera-ready PDFs:** September 5, 2022 (likely to be extended)
+**Source files and Camera-ready PDFs:** September 15, 2022
 
 **Workshop:** October 16-17, 2022 (Online and in Gyeongju, South Korea)
 
