@@ -4,3 +4,4 @@ output/metrics.json
 data/*
 .DS_Store
 ms2/.DS_Store
+submissions/*
