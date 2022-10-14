@@ -6,19 +6,11 @@
 
 The Multidocument Summarization for Literature Review (MSLR) Shared Task aims to study how medical evidence from different clinical studies are summarized in literature reviews. Reviews provide the highest quality of evidence for clinical care, but are expensive to produce manually. (Semi-)automation via NLP may facilitate faster evidence synthesis without sacrificing rigor. The MSLR shared task uses two datasets to assess the current state of multidocument summarization for this task, and to encourage the development of modeling contributions, scaffolding tasks, methods for model interpretability, and improved automated evaluation methods in this domain. 
 
-This task will be co-located at the [Scholarly Document Processing Workshop](https://sdproc.org/2022/) at [COLING 2022](https://coling2022.org/), to be held October 16-17, 2022, Online and in Gyeongju, South Korea. We invite submissions to our [leaderboard](#leaderboard) and [paper submissions](#submission-instructions) to the shared task. 
+This task is co-located at the [Scholarly Document Processing Workshop](https://sdproc.org/2022/) at [COLING 2022](https://coling2022.org/), held October 16-17, 2022, Online and in Gyeongju, South Korea.
 
 ## Timeline
 
-**Submission deadline:** ~~July 11, 2022~~ Friday, August 5, 2022 23:59 AOE **(Final extension)**
-
-**Acceptance notifications:** August 29, 2022
-
-**Source files and Camera-ready PDFs:** September 15, 2022
-
 **Workshop:** October 16-17, 2022 (Online and in Gyeongju, South Korea)
-
-**Note:** You do not have to submit a paper to present at the workshop, though it is encouraged. If you only submit to the leaderboards without submitting a paper, or if the model you submit to the leaderboards is published or being considered for publication elsewhere, we ask that you message the organizers with a 2-page abstract to be considered for presentation at the SDP workshop. Accepted full-length papers will be published in workshop proceedings. Abstracts are non-archival.
 
 ## Dataset Access
 
@@ -139,7 +131,7 @@ python evaluator/evaluator.py \
 
 When this script finishes, it will output metrics to `output/metrics.json` or another specified output file. The evaluator script can take several hours to run on CPU so please be patient.
 
-Evaluating generated text is notoriously challenging. **In addition to automated metrics, a sample of summaries from select submissions to the leaderboards will also be subject to human evaluation to measure consistency with the target.** These human evaluation results will hopefully be completed around the time of the workshop and will be shared with participants once they are ready. They will be released publicly to facilitate the development of multi-document summarization models and better automated summarization evaluation metrics for this task. Participants will be invited to contribute to the submission of a dataset paper.
+Evaluating generated text is notoriously challenging. To facilitate the development of better automated summarization evaluation metrics for this task, we may perform human evaluation on some of the generated summaries submitted to the MSLR leaderboards. We aim to share these human evaluation results with the public when they are complete.
 
 ## Leaderboard
 
@@ -153,15 +145,25 @@ You will need to create an account to submit results. Before submitting, please 
 
 If evaluation fails, you will receive an error. The same evaluation script as above is used in the leaderboard so please try to debug first by following the instructions in [the evaluation section](https://github.com/allenai/mslr-shared-task#evaluation). If you are able to get results with the evaluation script but not in the leaderboard, please contact [lucyw@allenai.org](mailto:lucyw@allenai.org).
 
-## Paper Submission Instructions
+## MSLR 2022 Accepted Papers
 
-Participants are invited to submit a paper describing their shared task contribution. Submissions will be subject to peer-review. Accepted papers will be presented by the authors at the SDP workshop either as a talk or a poster. All accepted papers will be published in the workshop proceedings in the ACL Anthology (proceedings from previous years can be found [here](https://aclanthology.org/venues/sdp/)).
+[**Overview of MSLR2022: A Shared Task on Multi-document Summarization for Literature Reviews**](https://aclanthology.org/2022.sdp-1.20/)  
+Lucy Lu Wang, Jay DeYoung, Byron Wallace
 
-Submissions must be in PDF format and anonymized for review. All submissions must be written in English and follow the [COLING 2022 formatting requirements](https://coling2022.org/Cpapers).
+[**LED down the rabbit hole: exploring the potential of global attention for biomedical multi-document summarisation**](https://aclanthology.org/2022.sdp-1.21/)  
+Yulia Otmakhova, Thinh Hung Truong, Timothy Baldwin, Trevor Cohn, Karin Verspoor, Jey Han Lau
 
-Paper submissions can be long papers (8 pages of content), or short papers (4 pages of content) plus unlimited references. Final versions of accepted papers will be allowed 1 additional page of content so that reviewer comments can be taken into account.
+[**Evaluating Pre-Trained Language Models on Multi-Document Summarization for Literature Reviews**](https://aclanthology.org/2022.sdp-1.22/)  
+Benjamin Yu
 
-Submission instructions are available on the SDP workshop [website](http://www.sdproc.org/). In SoftConf, when starting a new submission, select "Click HERE to make a new MSLR22: Multi-Document Summarization for Literature Reviews" and follow instructions.
+[**Exploring the limits of a base BART for multi-document summarization in the medical domain**](https://aclanthology.org/2022.sdp-1.23/)  
+Ishmael Obonyo, Silvia Casola, Horacio Saggion
+
+[**Abstractive Approaches To Multidocument Summarization Of Medical Literature Reviews**](https://aclanthology.org/2022.sdp-1.24/)  
+Rahul Tangsali, Aditya Jagdish Vyawahare, Aditya Vyankatesh Mandke, Onkar Rupesh Litake, Dipali Dattatray Kadam
+
+[**An Extractive-Abstractive Approach for Multi-document Summarization of Scientific Articles for Literature Review**](https://aclanthology.org/2022.sdp-1.25/)  
+Kartik Shinde, Trinita Roy, Tirthankar Ghosal
 
 ## Contact Us
 
@@ -171,13 +173,14 @@ To receive updates , please join our mailing list:   https://groups.google.com/g
 
 ## Organizing Team
 
-* Lucy Lu Wang, Allen Institute for AI (AI2)
-* Jay DeYoung, Northeastern University
-* Byron Wallace, Northeastern University
+* [Lucy Lu Wang](https://llwang.net/), University of Washington and Allen Institute for AI (AI2)
+* [Jay DeYoung](https://www.khoury.northeastern.edu/people/jay-deyoung/), Northeastern University
+* [Byron Wallace](https://www.byronwallace.com/), Northeastern University
 
 ## References
 
-**DeYoung, Jay, Iz Beltagy, Madeleine van Zuylen, Bailey Kuehl and Lucy Lu Wang. "MS2: A Dataset for Multi-Document Summarization of Medical Studies." EMNLP (2021).**
+[**MS2: A Dataset for Multi-Document Summarization of Medical Studies**](https://aclanthology.org/2021.emnlp-main.594/)  
+Jay Deyoung, Iz Beltagy, Madeleine van Zuylen, Bailey Kuehl, Lucy Lu Wang
 
 ```bibtex
 @inproceedings{DeYoung2021MS2MS,
@@ -188,7 +191,8 @@ To receive updates , please join our mailing list:   https://groups.google.com/g
 }
 ```
 
-**Byron C. Wallace, Sayantani Saha, Frank Soboczenski, and Iain James Marshall. (2020). "Generating (factual?) narrative summaries of RCTs: Experiments with neural multi-document summarization." AMIA Annual Symposium.**
+[**Generating (factual?) narrative summaries of RCTs: Experiments with neural multi-document summarization**](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8378607/)  
+Byron C. Wallace, Sayantani Saha, Frank Soboczenski, Iain James Marshall
 
 ```bibtex
 @article{Wallace2020GeneratingN,
