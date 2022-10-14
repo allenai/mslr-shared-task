@@ -151,13 +151,13 @@ If evaluation fails, you will receive an error. The same evaluation script as ab
 Lucy Lu Wang, Jay DeYoung, Byron Wallace
 
 [**LED down the rabbit hole: exploring the potential of global attention for biomedical multi-document summarisation**](https://aclanthology.org/2022.sdp-1.21/)  
-Yulia Otmakhova, Thinh Hung Truong, Timothy Baldwin, Trevor Cohn, Karin Verspoor, Jey Han Lau
+Yulia Otmakhova, Thinh Hung Truong, Timothy Baldwin, Trevor Cohn, Karin Verspoor, Jey Han Lau **\[[Github](https://github.com/joey234/PRIMER-pico-attn)\]**
 
 [**Evaluating Pre-Trained Language Models on Multi-Document Summarization for Literature Reviews**](https://aclanthology.org/2022.sdp-1.22/)  
-Benjamin Yu
+Benjamin Yu **\[[Demo](https://ben-yu.github.io/summarizer)\]**
 
 [**Exploring the limits of a base BART for multi-document summarization in the medical domain**](https://aclanthology.org/2022.sdp-1.23/)  
-Ishmael Obonyo, Silvia Casola, Horacio Saggion
+Ishmael Obonyo, Silvia Casola, Horacio Saggion **\[[Video](https://youtu.be/VUJ3ZSo8O6A)\]**
 
 [**Abstractive Approaches To Multidocument Summarization Of Medical Literature Reviews**](https://aclanthology.org/2022.sdp-1.24/)  
 Rahul Tangsali, Aditya Jagdish Vyawahare, Aditya Vyankatesh Mandke, Onkar Rupesh Litake, Dipali Dattatray Kadam
