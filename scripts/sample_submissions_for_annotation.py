@@ -34,7 +34,7 @@ if __name__ == '__main__':
         required=True)
     parser.add_argument(
         '--number_to_sample', '-n',
-        help='Number of instances to sample per submission (default=200)',
+        help='Number of instances to sample per submission (default=100)',
         default=100)
     parser.add_argument(
         '--number_overlap', '-p',
